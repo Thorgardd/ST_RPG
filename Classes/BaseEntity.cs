@@ -4,7 +4,7 @@ using RPG.Items;
 namespace RPG.Classes
 {
     public class BaseEntity
-{
+    {
      // Attributs de l'entité
         public string? Name { get; set; }
         public string? Description { get; set; }
@@ -17,7 +17,7 @@ namespace RPG.Classes
         public int Stamina { get; protected set; }
         protected int ActionPoints { get; set; }
         protected int AttackPoints { get; set; }
-        public MainMenu mainMenu { get; set; }
+        public MainMenu mainMenu { get; set; } = new MainMenu();
 
         
         // Methode pour attaquer un adversaire (Joueur vs Ennemi)
@@ -60,8 +60,9 @@ namespace RPG.Classes
                 mainMenu.LineMsgFormat("red", "L'Item est trop lourd pour être rangé dans le sac à dos");
                 
             }
-            
-            Backpack?.Add(item);
+
+            Item addedItem = new Item();
+            Backpack?.Add(addedItem);
             mainMenu.LineMsgFormat("green", $"Vous avez ajouté {item.Name} à votre sac à dos");
         }
 
@@ -81,15 +82,18 @@ namespace RPG.Classes
         // Methode pour afficher le sac à dos
         public void ShowBackpack()
         {
-            mainMenu.LineMsgFormat("dmagenta", "Sac à dos");
+            mainMenu.LineMsgFormat("blue", "Sac à dos");
             
             foreach (var item in Backpack)
             {
-                mainMenu.LineMsgFormat($"dmagenta", $"{item.Name}\n{item.Weight}");
+                mainMenu.LineMsgFormat($"blue", $"{item.Name}\n{item.Weight}");
             }
             
             mainMenu.LineMsgFormat("yellow", $"Votre sac contient {Backpack.Count} objet(s) sur {BackpackMaxWeight} emplacements disponibles");
-            mainMenu.LineMsgFormat("red", "Il n'y a aucun objet dans votre sac à dos");
+            if (Backpack == null)
+            {
+                mainMenu.LineMsgFormat("red", "Il n'y a aucun objet dans votre sac à dos");
+            }
         }
         
         
@@ -102,7 +106,6 @@ namespace RPG.Classes
                                                             $"Nom : {Name}\nDescription : {Description}\n" +
                                                             $"Vie : {Health} PV\n" +
                                                             $"Niveau : {Level}");
-            
         }
-}
+    }
 }

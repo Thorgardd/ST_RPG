@@ -2,6 +2,7 @@
 using System.ComponentModel.Design;
 using RPG.Classes.Character;
 using RPG.Interfaces;
+using RPG.Items;
 
 namespace RPG // Note: actual namespace depends on the project name.
 {
@@ -10,6 +11,8 @@ namespace RPG // Note: actual namespace depends on the project name.
         public static MainMenu mainMenu { get; set; }
         public static PlayerCharacter playerCharacter { get; set; }
         
+        public static Item item { get; set; }
+        
         public static void Main(string[] args)
         {
              mainMenu = new MainMenu();
@@ -17,7 +20,6 @@ namespace RPG // Note: actual namespace depends on the project name.
             string name = mainMenu.GetCharName();
             string description = mainMenu.GetCharDesc();
             playerCharacter = new PlayerCharacter(name, description);
-
             while (true)
             {
                 mainMenu.LineMsgFormat("yellow","Veuillez taper votre commande de jeu :");
@@ -40,6 +42,18 @@ namespace RPG // Note: actual namespace depends on the project name.
                     "/characterInfos              Permet de montrer les infos du personnage\n");
             }
 
+            if (args == "/giveItem")
+            {
+                Item savedItem = new Item();
+                playerCharacter.AddItem(savedItem);
+            }
+
+            if (args == "/createItem")
+            {
+                Item itemCreated = new Item();
+                mainMenu.LineMsgFormat("red", $"Vous avez créé l'objet {itemCreated}");
+            }
+
             if (args == "/backpack")
             {
                 playerCharacter?.ShowBackpack();
@@ -55,11 +69,15 @@ namespace RPG // Note: actual namespace depends on the project name.
                 Console.Clear();
             }
 
-            if (string.Join("", args) == "/heal")
+            if (string.Join(" ", args) == "/heal")
             {
                 playerCharacter?.Heal(50);
                 mainMenu?.LineMsgFormat("green","Vous vous êtes soignés complétement");
+            }
 
+            if (string.Join(" ", args) == "/give")
+            {
+                
             }
 
             if (args == "" || args?.Length < 1)

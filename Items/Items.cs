@@ -3,23 +3,33 @@
     public class Item
     {
         private string[] Objects = new[] { "Batte cloutée", "Revolver", "Grauffres Eggos", "Boisson énérgisante" };
-        public string Name;
-        public int Weight = 1;
-        public Random _Random = new ();
-        private int i;
+        public string Name { get; set; }
+        public int NameId { get; set; }
+        public int Weight { get; set; }
+        private readonly Random _Random = new ();
 
+        // Initialiseur d'Item
         public Item()
         {
-            for (i = 0; i < Objects.Length; i++)
-            {
-                Name = Objects[_Random.Next(0, Objects.Length)];
-                Weight = 1;
-            }
+             CreateItem();
         }
 
-        public void GiveItem(string name)
+        public void CreateItem()
         {
-            
+            Item itemCreated = new Item();
+            itemCreated.NameId = Objects[_Random.Next(1, Objects.Length)].Length;
+            itemCreated.Name = Objects[itemCreated.NameId];
+            itemCreated.Weight = 1;
+            /*ItemEffect(itemCreated);*/
         }
+
+        /*public void ItemEffect(Item item)
+        {
+            switch ()
+            {
+                case
+            }
+        }*/
+        
     }
 }

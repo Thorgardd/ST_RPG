@@ -1,4 +1,6 @@
-﻿namespace RPG.Classes.Character;
+﻿using RPG.Items;
+
+namespace RPG.Classes.Character;
 
 public class PlayerCharacter : BaseEntity
 {
@@ -15,6 +17,8 @@ public class PlayerCharacter : BaseEntity
         Description = description;
         Xp = 0;
         Health = 50;
+        BackpackWeight = 0;
+        Backpack = new List<Item>();
         Stamina = 100;
         ActionPoints = 3;
         Level = 1;
