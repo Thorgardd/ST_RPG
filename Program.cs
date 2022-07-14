@@ -42,13 +42,13 @@ namespace RPG // Note: actual namespace depends on the project name.
                     "/characterInfos              Permet de montrer les infos du personnage\n");
             }
 
-            if (args == "/giveItem")
+            if (args == "/giveitem")
             {
                 Item savedItem = new Item();
                 playerCharacter.AddItem(savedItem);
             }
 
-            if (args == "/createItem")
+            if (args == "/createitem")
             {
                 Item itemCreated = new Item();
                 mainMenu.LineMsgFormat("red", $"Vous avez créé l'objet {itemCreated}");

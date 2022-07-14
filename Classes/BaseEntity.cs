@@ -58,7 +58,7 @@ namespace RPG.Classes
             if (item.Weight > BackpackMaxWeight)
             {
                 mainMenu.LineMsgFormat("red", "L'Item est trop lourd pour être rangé dans le sac à dos");
-                
+                return;
             }
 
             Item addedItem = new Item();

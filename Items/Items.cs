@@ -16,10 +16,10 @@
 
         public void CreateItem()
         {
-            Item itemCreated = new Item();
-            itemCreated.NameId = Objects[_Random.Next(1, Objects.Length)].Length;
-            itemCreated.Name = Objects[itemCreated.NameId];
-            itemCreated.Weight = 1;
+            int rndValue = _Random.Next(0, Objects.Length - 1);
+            NameId = rndValue;
+            Name = Objects[rndValue];
+            Weight = 1;
             /*ItemEffect(itemCreated);*/
         }
 
