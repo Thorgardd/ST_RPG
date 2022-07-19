@@ -4,11 +4,11 @@ namespace RPG.Classes.Character;
 
 public class PlayerCharacter : BaseEntity
 {
-    private readonly Random _random = new ();
-    
+    private readonly Random _random = new();
+    private List<Item> Backpack;
+
     public PlayerCharacter()
     {
-        
     }
 
     public PlayerCharacter(string name, string description)
@@ -17,8 +17,7 @@ public class PlayerCharacter : BaseEntity
         Description = description;
         Xp = 0;
         Health = 50;
-        BackpackWeight = 0;
-        Backpack = new List<Item>();
+        Inventory = Backpack = new List<Item>();
         Stamina = 100;
         ActionPoints = 3;
         Level = 1;

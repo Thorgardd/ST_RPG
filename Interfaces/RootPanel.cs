@@ -1,16 +1,20 @@
 ﻿namespace RPG.Interfaces;
 
-public class MainMenu
+public class RootPanel
 {
-
-    private RootPanel Panel = new ();
-    
-    // Initialiseur
-    public MainMenu()
+    private bool BoolValue;
+    public void GamePresentation()
     {
-        Console.Clear();
-        Panel.GamePresentation();
-        Panel.CharacterCreation();
+        LineMsgFormat("red", "RPG STRANGER THINGS");
+        LineMsgFormat("white", "Bienvenue dans l'univers de Stranger Things, \n" +
+                               "où il y règne une atmosphère pesante, et où vous pourrez y faire d'étranges découvertes.\n" +
+                               "Arriverez-vous à percer le mystère qui réside dans Hawkins ?");
+        LineMsgFormat("green", "Tapez /help pour ouvrir le menu d'aide aux commandes");
+    }
+
+    public void CharacterCreation()
+    {
+        LineMsgFormat("red", "Veuillez choisir votre personnage : ");
     }
 
     // Methode pour afficher un texte formatté
@@ -27,9 +31,11 @@ public class MainMenu
                 break;
             case "red":
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("-------------------------------------------------------------------------");
+                Console.WriteLine(
+                    "-------------------------------------------------------------------------");
                 Console.WriteLine(message);
-                Console.WriteLine("-------------------------------------------------------------------------\n");
+                Console.WriteLine(
+                    "-------------------------------------------------------------------------\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 break;
             case "yellow":
